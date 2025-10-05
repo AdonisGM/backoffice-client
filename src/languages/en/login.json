@@ -1,0 +1,25 @@
+{
+  "title": "Back Office | Login",
+  "welcome": "Welcome back!",
+  "description": "Please sign in to your account.",
+  "description2": "if you don't have an account you can contact admin to create one for you.",
+  "form": {
+    "changeUsername": "Change Username",
+    "username": {
+      "label": "Username",
+      "placeholder": "Enter your username",
+      "required": "Username is required"
+    },
+    "password": {
+      "label": "Password",
+      "placeholder": "Enter your password",
+      "required": "Password is required"
+    },
+    "login": "Login"
+  },
+  "copyright": "Copyright",
+  "allRightsReserved": "All rights reserved.",
+  "version": "Version",
+  "address": "Floor 4, Dreamland Bonanza Building",
+  "address2": "No. 23, Duy Tan Street, Dich Vong Hau Ward, Cau Giay District, Hanoi City"
+}

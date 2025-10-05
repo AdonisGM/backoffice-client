@@ -1,0 +1,25 @@
+{
+  "title": "Back Office | Đăng nhập",
+  "welcome": "Chào mừng bạn trở lại!",
+  "description": "Vui lòng đăng nhập vào tài khoản của bạn.",
+  "description2": "nếu bạn chưa có tài khoản, bạn có thể liên hệ với quản trị viên để tạo một tài khoản cho bạn.",
+  "form": {
+    "changeUsername": "Thay đổi tên đăng nhập",
+    "username": {
+      "label": "Tên đăng nhập",
+      "placeholder": "Nhập tên đăng nhập của bạn",
+      "required": "Tên đăng nhập là bắt buộc"
+    },
+    "password": {
+      "label": "Mật khẩu",
+      "placeholder": "Nhập mật khẩu của bạn",
+      "required": "Mật khẩu là bắt buộc"
+    },
+    "login": "Đăng nhập"
+  },
+  "copyright": "Bản quyền",
+  "allRightsReserved": "Đã đăng ký bản quyền.",
+  "version": "Phiên bản",
+  "address": "Tầng 4, Tòa nhà Dreamland Bonanza",
+  "address2": "Số 23, Phố Duy Tân, Phường Dịch Vọng Hậu, Quận Cầu Giấy, Thành phố Hà Nội"
+}
