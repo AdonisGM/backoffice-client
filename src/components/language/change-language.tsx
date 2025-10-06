@@ -32,7 +32,7 @@ const ChangeLanguage = () => {
         }>
       ) => {
         return items.map((item) => (
-          <div key={item.data?.value} className="flex gap-2 items-center">
+          <div key={item.data?.value} className="flex items-center gap-2">
             <div>
               {item.data?.icon &&
                 createElement(item.data.icon, {
@@ -53,9 +53,9 @@ const ChangeLanguage = () => {
     >
       {(language) => (
         <SelectItem key={language.value} textValue={language.label}>
-          <div className="flex gap-2 items-center">
+          <div className="flex items-center gap-2">
             <div>
-              <language.icon className="w-5 h-5 rounded-full object-contain" />
+              <language.icon className="h-5 w-5 rounded-full object-contain" />
             </div>
             <div className="flex flex-col">
               <span className="text-small">{t(language.label)}</span>

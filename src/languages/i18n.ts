@@ -26,6 +26,7 @@ i18next
       },
     },
     defaultNS,
-  });
+  })
+  .then();
 
 export default i18next;

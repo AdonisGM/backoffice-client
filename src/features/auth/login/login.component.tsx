@@ -12,7 +12,7 @@ import { fieldContext, formContext } from '@/components/form';
 import FieldInputText from '@/components/form/fields/field-input-text.tsx';
 import FieldInputPassword from '@/components/form/fields/field-input-password.tsx';
 import ButtonSubmit from '@/components/form/buttons/button-submit.tsx';
-import ChangeLanguage from '@/features/setting/language/change-language.component.tsx';
+import ChangeLanguage from '@/components/language/change-language.tsx';
 
 const { useAppForm } = createFormHook({
   fieldComponents: {
@@ -65,21 +65,21 @@ const Login = (props: {
   });
 
   return (
-    <div className={'w-screen h-screen flex flex-row p-6 gap-6'}>
-      <div className={'h-full flex-1 hidden lg:block'}>
+    <div className={'flex h-screen w-screen flex-row gap-6 p-6'}>
+      <div className={'hidden h-full flex-1 lg:block'}>
         <div className={'relative h-full rounded-4xl p-2'}>
           <ShineBorder borderWidth={2} shineColor={['#093ab6', '#9f16e4', '#cc1143']} />
-          <div className={'bg-gray-200 w-full rounded-3xl h-full overflow-hidden'} />
+          <div className={'h-full w-full overflow-hidden rounded-3xl bg-gray-200'} />
         </div>
       </div>
-      <div className={'h-full w-full lg:w-[500px] flex flex-col justify-between'}>
+      <div className={'flex h-full w-full flex-col justify-between lg:w-[500px]'}>
         <div className={'flex flex-col gap-5'}>
           <div>
             <h1 className={'text-xl font-bold'}>{t('welcome')}</h1>
             <p className={'text-xs text-gray-500'}>{t('description')}</p>
             <p className={'text-xs text-gray-500'}>{t('description2')}</p>
           </div>
-          <div className={'flex flex-col items-center justify-center w-full'}>
+          <div className={'flex w-full flex-col items-center justify-center'}>
             <form
               className={'w-7/10'}
               onSubmit={(e) => {
@@ -107,10 +107,10 @@ const Login = (props: {
                 </form.AppField>
               )}
               {savedUsername && (
-                <div className={'flex flex-col items-center mt-4 gap-2'}>
+                <div className={'mt-4 flex flex-col items-center gap-2'}>
                   <div
                     className={
-                      'flex flex-col items-center justify-center w-14 h-14 rounded-full bg-gray-200 mx-auto'
+                      'mx-auto flex h-14 w-14 flex-col items-center justify-center rounded-full bg-gray-200'
                     }
                   >
                     <UserIcon size={32} strokeWidth={2} />
@@ -157,10 +157,10 @@ const Login = (props: {
           </div>
         </div>
         <div>
-          <div className={'flex flex-col items-center justify-center mb-4'}>
+          <div className={'mb-4 flex flex-col items-center justify-center'}>
             <ChangeLanguage />
           </div>
-          <div className={'text-xs text-start text-gray-500 italic'}>
+          <div className={'text-start text-xs text-gray-500 italic'}>
             <p>
               {t('copyright')} © {new Date().getFullYear()} DTND Inc. {t('allRightsReserved')}{' '}
               {t('version')} {packageJson.version}
