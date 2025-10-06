@@ -1,23 +1,23 @@
-import type { RootState } from "@/redux/store.ts";
+import type { RootState } from '@/redux/store.ts';
 
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type LanguageType = {
-    value: string;
+  value: string;
 };
 
 const initialState: LanguageType = {
-    value: localStorage.getItem("lang") || "en",
+  value: localStorage.getItem('lang') || 'en',
 };
 
 export const languageSlice = createSlice({
-    name: "language",
-    initialState,
-    reducers: {
-        change: (state, action: PayloadAction<string>) => {
-            state.value = action.payload;
-        },
+  name: 'language',
+  initialState,
+  reducers: {
+    change: (state, action: PayloadAction<string>) => {
+      state.value = action.payload;
     },
+  },
 });
 
 export const { change } = languageSlice.actions;
