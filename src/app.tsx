@@ -4,6 +4,7 @@ import { Fragment, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useAppSelector } from '@/hooks/redux-hook.ts';
+import Table from '@/components/table/table.tsx';
 
 const App = () => {
   const { i18n } = useTranslation();
@@ -18,6 +19,7 @@ const App = () => {
 
   return (
     <Fragment>
+      <Table />
       <ReactQueryDevtools initialIsOpen={false} />
       <TanStackRouterDevtools />
     </Fragment>

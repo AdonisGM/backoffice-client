@@ -1,73 +1,56 @@
-# React + TypeScript + Vite
+# Backoffice Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Đây là một ưng dụng web được xây dựng bằng React và TypeScript, cung cấp giao diện quản trị cho hệ thống Backoffice. 
+Ứng dụng này cho phép người dùng quản lý các tài nguyên, xem báo cáo và thực hiện các tác vụ quản trị khác.
 
-Currently, two official plugins are available:
+## Cấu trúc file
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Sử dụng ý tưởng từ Feature-based structure để tổ chức mã nguồn, cấu trúc thư mục chính của dự án như sau:
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+.
+├── public/                 # Thư mục chứa các file tĩnh
+├── src/                    # Thư mục chứa mã nguồn chính của ứng dụng
+│   ├── assets/             # Thư mục chứa các tài nguyên như hình ảnh
+│   ├── components/         # Thư mục chứa các thành phần React tái sử dụng
+│   │   ├── form/           # Thư mục chứa các thành phần liên quan đến form
+│   │   ├── language/       # Thư mục chứa các thành phần liên quan đến ngôn ngữ
+│   │   ├── layout/         # Thư mục chứa các thành phần liên quan đến bố cục
+│   │   ├── table/          # Thư mục chứa các thành phần liên quan đến bảng
+│   │   └── ...             # Các thành phần khác
+│   ├── features/           # Thư mục chứa các tính năng chính của ứng dụng
+│   │   ├── auth/           # Thư mục chứa các file liên quan đến xác thực
+│   │   ├── dashboard/      # Thư mục chứa các file liên quan đến bảng điều khiển
+│   │   ├── user/           # Thư mục chứa các file liên quan đến người dùng
+│   │   └── ...             # Các tính năng khác
+│   ├── routes/             # Thư mục chứa các định tuyến của ứng dụng
+│   ├── configs/            # Thư mục chứa các file cấu hình
+│   ├── hooks/              # Thư mục chứa các custom hooks
+│   ├── languages/          # Thư mục chứa các file ngôn ngữ cho đa ngôn ngữ
+│   ├── networks/           # Thư mục chứa các file liên quan đến mạng (API calls, socket, v.v.)
+│   ├── redux/              # Thư mục chứa các file liên quan đến Redux (actions, reducers, store)
+│   ├── utils/              # Thư mục chứa các tiện ích
+│   ├── App.tsx
+│   ├── index.tsx
+│   └── ...
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Thư viện sử dụng
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Cần nắm được cơ bản và tìm hiểu qua các chức năng, API, ... của các thư viện sau để có thể phát triển và bảo trì ứng dụng:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- React: Thư viện chính để xây dựng giao diện người dùng. (https://react.dev/)
+- TypeScript: Ngôn ngữ lập trình được sử dụng để viết mã nguồn. (https://www.typescriptlang.org/)
+- ReduxToolkit: Thư viện để quản lý trạng thái ứng dụng. (https://redux-toolkit.js.org/)
+- Tanstack Query: Thư viện để quản lý dữ liệu và trạng thái từ server. (https://tanstack.com/query/latest)
+- Tanstack Router: Thư viện để quản lý định tuyến trong ứng dụng. (https://tanstack.com/router/latest)
+- Tanstack Form: Thư viện để xây dựng và quản lý các biểu mẫu. (https://tanstack.com/form/latest)
+- i18next: Thư viện để hỗ trợ đa ngôn ngữ. (https://www.i18next.com/)
+- Axios: Thư viện để thực hiện các yêu cầu HTTP. (https://axios-http.com/)
+- Tailwind CSS: Thư viện để xây dựng giao diện người dùng với các lớp tiện ích. (https://tailwindcss.com/)
+
+## Quy định
+
+- Luôn sử dụng TypeScript để đảm bảo mã nguồn an toàn và dễ bảo trì.
+- Không được sử dụng type `any`, thay vào đó hãy sử dụng các kiểu dữ liệu cụ thể.
+- Luôn chạy kiểm tra eslint và prettier trước khi commit mã nguồn.
