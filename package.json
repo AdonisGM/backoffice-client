@@ -41,6 +41,7 @@
     "react-redux": "^9.2.0",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.14",
+    "tanstack-table-header-rowspan": "^1.0.4",
     "translation-check": "^1.1.1",
     "zod": "^4.1.11"
   },
