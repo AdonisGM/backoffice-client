@@ -1,0 +1,19 @@
+{
+  "button": {
+    "pin": "Pin column to left",
+    "unpin": "Unpin column",
+    "next_page": "Next Page",
+    "previous_page": "Previous Page",
+    "first_page": "First Page",
+    "last_page": "Last Page",
+    "setting": "Table Settings",
+    "export_excel": "Export to Excel",
+    "export_csv": "Export to CSV",
+    "export_pdf": "Export to PDF",
+    "export_word": "Export to Word"
+  },
+  "label": {
+    "page_size": "Page Size",
+    "of": "of"
+  }
+}

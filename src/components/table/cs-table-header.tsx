@@ -1,13 +1,17 @@
 import { RowData, Table } from '@tanstack/table-core';
 import CsTableHeaderCell from './cs-table-header-cell';
 
-const CsTableHeader = <TData extends RowData>(props: { tsTable: Table<TData> }) => {
+type CsTableHeaderProps<TData extends RowData> = {
+  tsTable: Table<TData>;
+};
+
+const CsTableHeader = <TData extends RowData>(props: CsTableHeaderProps<TData>) => {
   return (
-    <thead>
+    <thead className={'sticky top-0 z-10'}>
       {props.tsTable.getHeaderGroups().map((headerGroup) => (
         <tr key={headerGroup.id}>
           {headerGroup.headers.map((header) => {
-            return <CsTableHeaderCell key={header.id} header={header} />;
+            return <CsTableHeaderCell key={header.id} header={header} tsTable={props.tsTable} />;
           })}
         </tr>
       ))}
