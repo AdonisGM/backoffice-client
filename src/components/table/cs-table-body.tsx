@@ -2,8 +2,13 @@ import { RowData, Table } from '@tanstack/table-core';
 import { flexRender } from '@tanstack/react-table';
 import { useState } from 'react';
 import { getCommonPinningStyles } from '@/utils/table-utils.ts';
+import CsTableEmpty from '@/components/table/cs-table-empty.tsx';
 
-const CsTableBody = <TData extends RowData>(props: { tsTable: Table<TData> }) => {
+type CsTableBodyProps<TData> = {
+  tsTable: Table<TData>;
+};
+
+const CsTableBody = <TData extends RowData>(props: CsTableBodyProps<TData>) => {
   const [hoverRowId, setHoverRowId] = useState<Set<string>>(new Set());
 
   return (
@@ -43,6 +48,7 @@ const CsTableBody = <TData extends RowData>(props: { tsTable: Table<TData> }) =>
           </tr>
         );
       })}
+      {props.tsTable.getRowModel().rows.length === 0 && <CsTableEmpty />}
     </tbody>
   );
 };
