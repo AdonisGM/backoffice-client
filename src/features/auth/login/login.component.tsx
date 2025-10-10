@@ -13,6 +13,7 @@ import FieldInputText from '@/components/form/fields/field-input-text.tsx';
 import FieldInputPassword from '@/components/form/fields/field-input-password.tsx';
 import ButtonSubmit from '@/components/form/buttons/button-submit.tsx';
 import ChangeLanguage from '@/components/language/change-language.tsx';
+import { loginBorderGradient } from '@/configs/color-style.ts';
 
 const { useAppForm } = createFormHook({
   fieldComponents: {
@@ -26,7 +27,7 @@ const { useAppForm } = createFormHook({
   formContext,
 });
 
-const Login = (props: {
+const LoginComponent = (props: {
   search: {
     redirect?: string;
   };
@@ -68,7 +69,7 @@ const Login = (props: {
     <div className={'flex h-screen w-screen flex-row gap-6 p-6'}>
       <div className={'hidden h-full flex-1 lg:block'}>
         <div className={'relative h-full rounded-4xl p-2'}>
-          <ShineBorder borderWidth={2} shineColor={['#093ab6', '#9f16e4', '#cc1143']} />
+          <ShineBorder borderWidth={2} shineColor={loginBorderGradient} />
           <div className={'h-full w-full overflow-hidden rounded-3xl bg-gray-200'} />
         </div>
       </div>
@@ -182,4 +183,4 @@ const Login = (props: {
   );
 };
 
-export default Login;
+export default LoginComponent;

@@ -1,0 +1,19 @@
+{
+  "button": {
+    "pin": "Ghim cột sang trái",
+    "unpin": "Bỏ ghim cột",
+    "next_page": "Trang tiếp",
+    "previous_page": "Trang trước",
+    "first_page": "Trang đầu",
+    "last_page": "Trang cuối",
+    "setting": "Cài đặt bảng",
+    "export_excel": "Xuất ra Excel",
+    "export_csv": "Xuất ra CSV",
+    "export_pdf": "Xuất ra PDF",
+    "export_word": "Xuất ra Word"
+  },
+  "label": {
+    "page_size": "Kích thước trang",
+    "of": "của"
+  }
+}

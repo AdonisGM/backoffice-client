@@ -3,8 +3,6 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createRouter, RouterProvider } from '@tanstack/react-router';
 import { HeroUIProvider } from '@heroui/react';
 import { Provider } from 'react-redux';
-
-// eslint-disable-next-line import/order
 import { routeTree } from '@/routeTree.gen.ts';
 import '@/index.css';
 import '@/languages/i18n.ts';

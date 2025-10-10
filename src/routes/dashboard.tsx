@@ -1,4 +1,5 @@
 import { createFileRoute, redirect } from '@tanstack/react-router';
+import AnalystsAssetComponent from '@/features/dashboard/analysts-asset/analysts-asset.component.tsx';
 
 export const Route = createFileRoute('/dashboard')({
   component: RouteComponent,
@@ -17,5 +18,5 @@ export const Route = createFileRoute('/dashboard')({
 });
 
 function RouteComponent() {
-  return <div>Hello</div>;
+  return <AnalystsAssetComponent />;
 }

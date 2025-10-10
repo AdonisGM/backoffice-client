@@ -6,6 +6,8 @@ import en_login from './en/login.json';
 import vi_login from './vi/login.json';
 import en_setting from './en/setting.json';
 import vi_setting from './vi/setting.json';
+import en_table from './en/table.json';
+import vi_table from './vi/table.json';
 
 export const defaultNS = 'home';
 
@@ -19,10 +21,12 @@ i18next
       en: {
         login: en_login,
         setting: en_setting,
+        table: en_table,
       },
       vi: {
         login: vi_login,
         setting: vi_setting,
+        table: vi_table,
       },
     },
     defaultNS,
