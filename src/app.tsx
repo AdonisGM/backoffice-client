@@ -4,6 +4,7 @@ import { Fragment, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useAppSelector } from '@/hooks/redux-hook.ts';
+import Toast from '@/components/toast/toast.tsx';
 
 const App = () => {
   const { i18n } = useTranslation();
@@ -18,8 +19,13 @@ const App = () => {
 
   return (
     <Fragment>
-      <ReactQueryDevtools initialIsOpen={false} />
-      <TanStackRouterDevtools />
+      <ReactQueryDevtools
+        buttonPosition={'bottom-right'}
+        initialIsOpen={false}
+        position={'bottom'}
+      />
+      <TanStackRouterDevtools initialIsOpen={false} position={'bottom-left'} />
+      <Toast />
     </Fragment>
   );
 };
