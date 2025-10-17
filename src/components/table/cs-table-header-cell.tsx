@@ -32,11 +32,13 @@ const CsTableHeaderCell = <TData extends RowData>(props: CsTableHeaderCellProps<
         ...getCommonPinningStyles(props.header.column),
       }}
     >
-      <div className={'flex items-center justify-between gap-2'}>
-        <div className={'w-6'} />
+      <div
+        className={`flex items-center ${props.header.column.getCanPin() ? 'justify-between' : 'justify-center'} gap-2`}
+      >
+        {props.header.column.getCanPin() && <div className={'w-6'} />}
         <div>{flexRender(props.header.column.columnDef.header, props.header.getContext())}</div>
-        <div className={'w-6'}>
-          {props.header.column.getCanPin() && (
+        {props.header.column.getCanPin() && (
+          <div className={'w-6'}>
             <Fragment>
               {props.header.column.getIsPinned() !== 'left' ? (
                 <Tooltip color="primary" content={t('button.pin')} delay={1000} size={'sm'}>
@@ -63,8 +65,8 @@ const CsTableHeaderCell = <TData extends RowData>(props: CsTableHeaderCellProps<
                 </Tooltip>
               ) : null}
             </Fragment>
-          )}
-        </div>
+          </div>
+        )}
       </div>
       {props.header.column.getCanResize() && (
         <div

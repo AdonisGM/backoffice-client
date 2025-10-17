@@ -14,6 +14,7 @@
   },
   "label": {
     "page_size": "Kích thước trang",
-    "of": "của"
+    "of": "của",
+    "row_selected": "hàng được chọn"
   }
 }

@@ -1,7 +1,7 @@
 import { createFileRoute, redirect } from '@tanstack/react-router';
 import AnalystsAssetComponent from '@/features/dashboard/analysts-asset/analysts-asset.component.tsx';
 
-export const Route = createFileRoute('/dashboard')({
+export const Route = createFileRoute('/(app)/_layout/dashboard')({
   component: RouteComponent,
   beforeLoad: ({ location }) => {
     const user = localStorage.getItem('user');

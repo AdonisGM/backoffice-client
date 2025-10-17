@@ -89,6 +89,7 @@ const CsTablePaging = <TData extends RowData>(props: CsTablePagingProps<TData>) 
       <div className={'ml-2 flex items-center gap-1'}>
         <p className={'text-sm'}>{t('label.page_size')}: </p>
         <Select
+          aria-label={'Page Size'}
           className={'w-20'}
           selectedKeys={new Set([String(props.tsTable.getState().pagination.pageSize)])}
           size={'sm'}

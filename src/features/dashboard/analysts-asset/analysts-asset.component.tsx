@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { createColumnHelper } from '@tanstack/react-table';
-import CsTable from '@/components/table/cs-table.tsx';
 import { getDefaultColumnAccessor, getDefaultColumnGroup } from '@/configs/table-config.ts';
+import CsTable from '@/components/table/cs-table.tsx';
 
 type User = {
   id: number;
@@ -352,7 +352,7 @@ const AnalystsAssetComponent = () => {
   }, []);
 
   return (
-    <div className={'w-screen'}>
+    <div className={'w-full'}>
       <CsTable<User>
         columnPinning={{
           left: ['id'],
@@ -360,8 +360,8 @@ const AnalystsAssetComponent = () => {
         }}
         columns={columns}
         data={data}
-        loading={false}
-        overflow={true}
+        isLoading={false}
+        isOverflow={true}
         onClickExportCsv={async () => {
           return new Promise<void>((resolve) => {
             setTimeout(() => {
