@@ -8,13 +8,20 @@ type CsTableFooterProps<TData> = {
 const CsTableFooter = <TData extends RowData>(props: CsTableFooterProps<TData>) => {
   return (
     <tfoot className={'sticky bottom-0 z-10'}>
-      {props.tsTable.getFooterGroups().map((footerGroup) => (
-        <tr key={footerGroup.id}>
-          {footerGroup.headers.map((header) => (
-            <CsTableFooterCell key={header.id} header={header} tsTable={props.tsTable} />
-          ))}
-        </tr>
-      ))}
+      <tr>
+        {props.tsTable
+          .getFooterGroups()
+          .map((footerGroup) => {
+            return footerGroup.headers;
+          })
+          .flat()
+          .filter((header) => {
+            return header.getLeafHeaders().length === 1;
+          })
+          .map((header) => {
+            return <CsTableFooterCell key={header.id} header={header} tsTable={props.tsTable} />;
+          })}
+      </tr>
     </tfoot>
   );
 };

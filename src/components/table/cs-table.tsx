@@ -1,25 +1,45 @@
-import { useReactTable, getCoreRowModel, getPaginationRowModel } from '@tanstack/react-table';
-import { RowData, ColumnDef, ColumnPinningState } from '@tanstack/table-core';
+import {
+  useReactTable,
+  getCoreRowModel,
+  getPaginationRowModel,
+  Row,
+  OnChangeFn,
+} from '@tanstack/react-table';
+import { RowData, ColumnDef, ColumnPinningState, RowSelectionState } from '@tanstack/table-core';
 import { useState } from 'react';
-import { CircularProgress } from '@heroui/react';
+import { Chip, CircularProgress } from '@heroui/react';
+import { useTranslation } from 'react-i18next';
 import CsTableHeader from '@/components/table/cs-table-header.tsx';
 import CsTableBody from '@/components/table/cs-table-body.tsx';
-import { pageSizeOptions } from '@/configs/table-config.ts';
+import { getDefaultColumnAccessor, pageSizeOptions } from '@/configs/table-config.ts';
 import CsTablePaging from '@/components/table/cs-table-paging.tsx';
 import CsTableSetting from '@/components/table/cs-table-setting.tsx';
+import CsTableFooter from '@/components/table/cs-table-footer.tsx';
+import CsTableCheckbox from '@/components/table/cs-table-checkbox.tsx';
 
 type CsTableProps<TData extends RowData> = {
   columns: ColumnDef<TData, any>[];
   data: TData[];
-  overflow?: boolean;
+
+  isOverflow?: boolean;
+  isDisablePagination?: boolean;
+  isLoading?: boolean;
+  isShowFooter?: boolean;
+  isShowSelectionColumn?: boolean | ((row: Row<TData>) => boolean) | undefined;
+
+  rowId:
+    | ((originalRow: TData, index: number, parent?: Row<TData> | undefined) => string)
+    | undefined;
   columnPinning?: ColumnPinningState;
-  disablePagination?: boolean;
+  rowSelection?: RowSelectionState | undefined;
   tableClassName?: string;
-  loading?: boolean;
+
   onClickExportExcel?: () => Promise<void>;
   onClickExportPdf?: () => Promise<void>;
   onClickExportCsv?: () => Promise<void>;
   onClickExportWord?: () => Promise<void>;
+
+  onRowSelectionChange?: OnChangeFn<RowSelectionState> | undefined;
 };
 
 const CsTable = <TData extends RowData>(props: CsTableProps<TData>) => {
@@ -31,15 +51,38 @@ const CsTable = <TData extends RowData>(props: CsTableProps<TData>) => {
     pageIndex: 0,
     pageSize: pageSizeOptions[0],
   });
-
   const tsTable = useReactTable<TData>({
     // Rows and Columns
     data: props.data,
-    columns: props.columns,
+    columns: props.isShowSelectionColumn
+      ? [
+          {
+            ...getDefaultColumnAccessor<TData>(),
+            id: 'select',
+            size: 10,
+            header: ({ table }) => (
+              <CsTableCheckbox
+                isIndeterminate={table.getIsSomePageRowsSelected()}
+                isSelected={table.getIsAllPageRowsSelected()}
+                onChange={table.getToggleAllPageRowsSelectedHandler()}
+              />
+            ),
+            cell: ({ row }) => (
+              <CsTableCheckbox
+                isDisabled={!row.getCanSelect()}
+                isIndeterminate={row.getIsSomeSelected()}
+                isSelected={row.getIsSelected()}
+                onChange={row.getToggleSelectedHandler()}
+              />
+            ),
+          },
+          ...props.columns,
+        ]
+      : props.columns,
 
     // Register core table
     getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: props.disablePagination ? undefined : getPaginationRowModel(),
+    getPaginationRowModel: props.isDisablePagination ? undefined : getPaginationRowModel(),
 
     // Configurations
     defaultColumn: {
@@ -52,30 +95,39 @@ const CsTable = <TData extends RowData>(props: CsTableProps<TData>) => {
     groupedColumnMode: 'reorder',
     renderFallbackValue: undefined,
     autoResetPageIndex: true,
+    enableRowSelection: props.isShowSelectionColumn,
+    getRowId: props.rowId,
 
     // State
     state: {
       columnPinning: columnPinning,
       columnVisibility: columnVisibility,
       pagination: pagination,
+      rowSelection: props.rowSelection,
     },
     onStateChange(): void {},
     onColumnPinningChange: setColumnPinning,
     onColumnVisibilityChange: setColumnVisibility,
+    onRowSelectionChange: props.onRowSelectionChange,
     onPaginationChange: setPagination,
+
+    // Debugging
+    debugAll: false, // Only for development
   });
 
+  const { t } = useTranslation('table');
+
   return (
-    <div className={'h-full w-full p-1'}>
-      <div className={'overflow-hidden rounded-2xl border border-gray-300 p-1'}>
-        <div className={'relative overflow-hidden rounded-2xl'}>
+    <div className={'w-full p-2'}>
+      <div className={'w-full overflow-hidden rounded-2xl border border-gray-300 p-1'}>
+        <div className={'w-full overflow-hidden rounded-2xl'}>
           <div
-            className={`${props.overflow ? 'overflow-x-auto' : 'overflow-x-auto'} w-full ${props.tableClassName ? props.tableClassName : ''}`}
+            className={`${props.isOverflow ? 'overflow-x-auto' : 'overflow-x-auto'} w-full ${props.tableClassName ? props.tableClassName : ''}`}
           >
             <table
               className={`box-border w-full border-collapse divide-gray-200 overflow-y-auto rounded-xl`}
               {...(() => {
-                if (props.overflow) {
+                if (props.isOverflow) {
                   return {
                     style: {
                       width: tsTable.getCenterTotalSize(),
@@ -86,10 +138,10 @@ const CsTable = <TData extends RowData>(props: CsTableProps<TData>) => {
             >
               <CsTableHeader tsTable={tsTable} />
               <CsTableBody tsTable={tsTable} />
-              {/*<CsTableFooter tsTable={tsTable} />*/}
+              {props.isShowFooter && <CsTableFooter tsTable={tsTable} />}
             </table>
           </div>
-          {props.loading && (
+          {props.isLoading && (
             <div className="absolute inset-0 z-10 flex h-full w-full items-center justify-center bg-white/70">
               <CircularProgress color={'primary'} size={'md'} />
             </div>
@@ -97,8 +149,17 @@ const CsTable = <TData extends RowData>(props: CsTableProps<TData>) => {
           <div
             className={'flex items-center justify-between border-t border-gray-200 bg-white pt-1'}
           >
-            {!props.disablePagination && <CsTablePaging tsTable={tsTable} />}
-            {props.disablePagination && <div />}
+            <div className={'flex items-center gap-2'}>
+              {!props.isDisablePagination && <CsTablePaging tsTable={tsTable} />}
+              {props.rowSelection && Object.keys(props.rowSelection).length > 0 && (
+                <Chip size={'sm'}>
+                  <p className={'text-sm'}>
+                    <strong>{Object.keys(props.rowSelection).length}</strong>{' '}
+                    {t('label.row_selected')}
+                  </p>
+                </Chip>
+              )}
+            </div>
             <CsTableSetting
               tsTable={tsTable}
               onClickExportCsv={props.onClickExportCsv}

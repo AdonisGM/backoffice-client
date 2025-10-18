@@ -27,7 +27,7 @@ const { useAppForm } = createFormHook({
   formContext,
 });
 
-const LoginComponent = (props: {
+const LoginContent = (props: {
   search: {
     redirect?: string;
   };
@@ -183,4 +183,4 @@ const LoginComponent = (props: {
   );
 };
 
-export default LoginComponent;
+export default LoginContent;
