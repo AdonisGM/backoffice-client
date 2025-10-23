@@ -1,0 +1,21 @@
+{
+  "dashboard": "Dashboard",
+  "business": {
+    "policy": "Policy Management",
+    "account": "Account Management",
+    "cash": "Cash Management",
+    "stock": "Stock Management",
+    "right": "Right Management",
+    "margins": "Margin Management",
+    "stp": "STP Connection",
+    "bank": "Bank Connection",
+    "report": "Reports"
+  },
+  "system": {
+    "core": "CORE System Operation"
+  },
+  "group": {
+    "business": "Business",
+    "system": "System"
+  }
+}

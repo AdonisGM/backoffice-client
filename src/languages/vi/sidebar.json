@@ -1,0 +1,21 @@
+{
+  "dashboard": "Tổng quan",
+  "business": {
+    "policy": "Quản lý chính sách",
+    "account": "Quản lý tài khoản",
+    "cash": "Quản lý tiền",
+    "stock": "Quản lý chứng khoán",
+    "right": "Quản lý quyền",
+    "margins": "Quản lý ký quỹ",
+    "stp": "Kết nối STP",
+    "bank": "Kết nối ngân hàng",
+    "report": "Báo cáo"
+  },
+  "system": {
+    "core": "Vận hành hệ thống CORE"
+  },
+  "group": {
+    "business": "Nghiệp vụ",
+    "system": "Hệ thống"
+  }
+}
