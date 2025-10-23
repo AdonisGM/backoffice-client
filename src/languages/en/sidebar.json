@@ -9,10 +9,22 @@
     "margins": "Margin Management",
     "stp": "STP Connection",
     "bank": "Bank Connection",
-    "report": "Reports"
+    "report": "Reports",
+    "sub_tabs": {
+      "policy": {
+        "policy": "Policy",
+        "combo_fee": "Combo Fee",
+        "trading_fee": "Trading Fee",
+        "advance_fee": "Advance Fee",
+        "sms_fee": "SMS Fee",
+        "margin_fee": "Margin Fee",
+        "other_fee": "Other Fee"
+      }
+    }
   },
   "system": {
-    "core": "CORE System Operation"
+    "core": "System Operation",
+    "trading": "Market Information"
   },
   "group": {
     "business": "Business",
