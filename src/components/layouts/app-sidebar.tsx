@@ -33,7 +33,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <TeamSwitcher />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={menuSidebar} label={t('group.layout.business')} />
+        <NavMain items={menuSidebar} label={t('group.business')} />
         <NavMain items={menuSystemSidebar} label={t('group.system')} />
       </SidebarContent>
       <SidebarFooter>

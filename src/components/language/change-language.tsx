@@ -19,6 +19,7 @@ const ChangeLanguage = () => {
 
   return (
     <Select
+      aria-label={'Change Language'}
       className={'w-fit'}
       classNames={{
         trigger: 'rounded-full w-40',

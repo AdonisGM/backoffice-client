@@ -31,7 +31,7 @@ export const menuSidebar: Array<MenuSidebar> = [
     type: 'group',
     title: 'business.policy',
     icon: Shield,
-    url: '/business/policy/*',
+    url: '/business/policy',
     items: [
       {
         title: 'business.sub_tabs.policy.policy',
