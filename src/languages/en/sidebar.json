@@ -1,0 +1,33 @@
+{
+  "dashboard": "Dashboard",
+  "business": {
+    "policy": "Policy Management",
+    "account": "Account Management",
+    "cash": "Cash Management",
+    "stock": "Stock Management",
+    "right": "Right Management",
+    "margins": "Margin Management",
+    "stp": "STP Connection",
+    "bank": "Bank Connection",
+    "report": "Reports",
+    "sub_tabs": {
+      "policy": {
+        "policy": "Policy",
+        "combo_fee": "Combo Fee",
+        "trading_fee": "Trading Fee",
+        "advance_fee": "Advance Fee",
+        "sms_fee": "SMS Fee",
+        "margin_fee": "Margin Fee",
+        "other_fee": "Other Fee"
+      }
+    }
+  },
+  "system": {
+    "core": "System Operation",
+    "trading": "Market Information"
+  },
+  "group": {
+    "business": "Business",
+    "system": "System"
+  }
+}

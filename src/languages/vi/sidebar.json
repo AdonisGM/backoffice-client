@@ -1,0 +1,33 @@
+{
+  "dashboard": "Tổng quan",
+  "business": {
+    "policy": "Quản lý chính sách",
+    "account": "Quản lý tài khoản",
+    "cash": "Quản lý tiền",
+    "stock": "Quản lý chứng khoán",
+    "right": "Quản lý quyền",
+    "margins": "Quản lý ký quỹ",
+    "stp": "Kết nối STP",
+    "bank": "Kết nối ngân hàng",
+    "report": "Báo cáo",
+    "sub_tabs": {
+      "policy": {
+        "policy": "Chính sách",
+        "combo_fee": "Combo phí",
+        "trading_fee": "Combo phí",
+        "advance_fee": "Phí ứng trước",
+        "sms_fee": "Phí SMS",
+        "margin_fee": "Phí ký quỹ",
+        "other_fee": "Phí khác"
+      }
+    }
+  },
+  "system": {
+    "core": "Vận hành hệ thống",
+    "trading": "Thông tin thị trường"
+  },
+  "group": {
+    "business": "Nghiệp vụ",
+    "system": "Hệ thống"
+  }
+}

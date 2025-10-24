@@ -15,6 +15,8 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as appLayoutRouteImport } from './routes/(app)/_layout'
 import { Route as appLayoutDashboardRouteImport } from './routes/(app)/_layout.dashboard'
+import { Route as appLayoutBusinessPolicyPolicyRouteImport } from './routes/(app)/_layout.business/policy/policy'
+import { Route as appLayoutBusinessPolicyComboFeeRouteImport } from './routes/(app)/_layout.business/policy/combo-fee'
 
 const appRouteImport = createFileRoute('/(app)')()
 
@@ -41,16 +43,32 @@ const appLayoutDashboardRoute = appLayoutDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => appLayoutRoute,
 } as any)
+const appLayoutBusinessPolicyPolicyRoute =
+  appLayoutBusinessPolicyPolicyRouteImport.update({
+    id: '/business/policy/policy',
+    path: '/business/policy/policy',
+    getParentRoute: () => appLayoutRoute,
+  } as any)
+const appLayoutBusinessPolicyComboFeeRoute =
+  appLayoutBusinessPolicyComboFeeRouteImport.update({
+    id: '/business/policy/combo-fee',
+    path: '/business/policy/combo-fee',
+    getParentRoute: () => appLayoutRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof appLayoutRouteWithChildren
   '/login': typeof LoginRoute
   '/dashboard': typeof appLayoutDashboardRoute
+  '/business/policy/combo-fee': typeof appLayoutBusinessPolicyComboFeeRoute
+  '/business/policy/policy': typeof appLayoutBusinessPolicyPolicyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof appLayoutRouteWithChildren
   '/login': typeof LoginRoute
   '/dashboard': typeof appLayoutDashboardRoute
+  '/business/policy/combo-fee': typeof appLayoutBusinessPolicyComboFeeRoute
+  '/business/policy/policy': typeof appLayoutBusinessPolicyPolicyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -59,12 +77,24 @@ export interface FileRoutesById {
   '/(app)': typeof appRouteWithChildren
   '/(app)/_layout': typeof appLayoutRouteWithChildren
   '/(app)/_layout/dashboard': typeof appLayoutDashboardRoute
+  '/(app)/_layout/business/policy/combo-fee': typeof appLayoutBusinessPolicyComboFeeRoute
+  '/(app)/_layout/business/policy/policy': typeof appLayoutBusinessPolicyPolicyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login' | '/dashboard'
+  fullPaths:
+    | '/'
+    | '/login'
+    | '/dashboard'
+    | '/business/policy/combo-fee'
+    | '/business/policy/policy'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/dashboard'
+  to:
+    | '/'
+    | '/login'
+    | '/dashboard'
+    | '/business/policy/combo-fee'
+    | '/business/policy/policy'
   id:
     | '__root__'
     | '/'
@@ -72,6 +102,8 @@ export interface FileRouteTypes {
     | '/(app)'
     | '/(app)/_layout'
     | '/(app)/_layout/dashboard'
+    | '/(app)/_layout/business/policy/combo-fee'
+    | '/(app)/_layout/business/policy/policy'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -117,15 +149,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof appLayoutDashboardRouteImport
       parentRoute: typeof appLayoutRoute
     }
+    '/(app)/_layout/business/policy/policy': {
+      id: '/(app)/_layout/business/policy/policy'
+      path: '/business/policy/policy'
+      fullPath: '/business/policy/policy'
+      preLoaderRoute: typeof appLayoutBusinessPolicyPolicyRouteImport
+      parentRoute: typeof appLayoutRoute
+    }
+    '/(app)/_layout/business/policy/combo-fee': {
+      id: '/(app)/_layout/business/policy/combo-fee'
+      path: '/business/policy/combo-fee'
+      fullPath: '/business/policy/combo-fee'
+      preLoaderRoute: typeof appLayoutBusinessPolicyComboFeeRouteImport
+      parentRoute: typeof appLayoutRoute
+    }
   }
 }
 
 interface appLayoutRouteChildren {
   appLayoutDashboardRoute: typeof appLayoutDashboardRoute
+  appLayoutBusinessPolicyComboFeeRoute: typeof appLayoutBusinessPolicyComboFeeRoute
+  appLayoutBusinessPolicyPolicyRoute: typeof appLayoutBusinessPolicyPolicyRoute
 }
 
 const appLayoutRouteChildren: appLayoutRouteChildren = {
   appLayoutDashboardRoute: appLayoutDashboardRoute,
+  appLayoutBusinessPolicyComboFeeRoute: appLayoutBusinessPolicyComboFeeRoute,
+  appLayoutBusinessPolicyPolicyRoute: appLayoutBusinessPolicyPolicyRoute,
 }
 
 const appLayoutRouteWithChildren = appLayoutRoute._addFileChildren(
