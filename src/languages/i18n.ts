@@ -12,6 +12,8 @@ import en_sidebar from './en/sidebar.json';
 import vi_sidebar from './vi/sidebar.json';
 import en_header from './en/header.json';
 import vi_header from './vi/header.json';
+import en_form from './en/form.json';
+import vi_form from './vi/form.json';
 
 export const defaultNS = 'home';
 
@@ -28,6 +30,7 @@ i18next
         table: en_table,
         sidebar: en_sidebar,
         header: en_header,
+        form: en_form,
       },
       vi: {
         login: vi_login,
@@ -35,6 +38,7 @@ i18next
         table: vi_table,
         sidebar: vi_sidebar,
         header: vi_header,
+        form: vi_form,
       },
     },
     defaultNS,

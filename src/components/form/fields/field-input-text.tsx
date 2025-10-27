@@ -7,11 +7,8 @@ const FieldInputText = (props: InputProps) => {
 
   return (
     <Input
+      autoComplete={'off'}
       className={props.className}
-      classNames={{
-        label: 'pb-1',
-        input: 'text-xs',
-      }}
       labelPlacement={'outside-top'}
       radius={'sm'}
       size={'sm'}

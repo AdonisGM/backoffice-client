@@ -41,7 +41,9 @@ function RouteComponent() {
             <ChangeLanguage />
           </div>
         </header>
-        <Outlet />
+        <div className={'p-5'}>
+          <Outlet />
+        </div>
       </SidebarInset>
     </SidebarProvider>
   );
