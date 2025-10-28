@@ -72,7 +72,11 @@ const FieldInputAutocomplete = (props: FieldInputAutocompleteProps) => {
 
   return (
     <Autocomplete
-      className={props.className}
+      inputProps={{
+        classNames: {
+          label: 'w-fit h-fit mb-1.5 p-0',
+        },
+      }}
       inputValue={fieldState.inputValue}
       isDisabled={props.isDisabled}
       isLoading={props.isLoading}

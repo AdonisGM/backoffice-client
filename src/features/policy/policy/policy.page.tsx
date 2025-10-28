@@ -1,5 +1,6 @@
 import { createFormHook, useStore } from '@tanstack/react-form';
 import { useState } from 'react';
+import { Select, SelectItem } from '@heroui/react';
 import FieldInputText from '@/components/form/fields/field-input-text.tsx';
 import FieldInputPassword from '@/components/form/fields/field-input-password.tsx';
 import ButtonSubmit from '@/components/form/buttons/button-submit.tsx';
@@ -79,7 +80,6 @@ const PolicyPage = () => {
           <form.AppField name="text">
             {(field) => (
               <field.FieldInputText
-                className={'mt-4'}
                 isDisabled={isDisabled}
                 isRequired={requireValidation}
                 label={'Input text'}
@@ -90,7 +90,6 @@ const PolicyPage = () => {
           <form.AppField name="pass">
             {(field) => (
               <field.FieldInputPassword
-                className={'mt-4'}
                 isDisabled={isDisabled}
                 isRequired={requireValidation}
                 label={'Input password'}
@@ -101,7 +100,6 @@ const PolicyPage = () => {
           <form.AppField name="number">
             {(field) => (
               <field.FieldInputNumber
-                className={'mt-4'}
                 isDisabled={isDisabled}
                 isRequired={requireValidation}
                 label={'Input number'}
@@ -112,7 +110,6 @@ const PolicyPage = () => {
           <form.AppField name="autocomplete">
             {(field) => (
               <field.FieldInputAutocomplete
-                className={'mt-4'}
                 isDisabled={isDisabled}
                 isRequired={requireValidation}
                 label={'Input autocomplete'}
@@ -137,7 +134,6 @@ const PolicyPage = () => {
           <form.AppField name="select">
             {(field) => (
               <field.FieldSelect
-                className={'mt-4'}
                 isDisabled={isDisabled}
                 isRequired={requireValidation}
                 label={'Select input'}
@@ -159,6 +155,15 @@ const PolicyPage = () => {
               />
             )}
           </form.AppField>
+          <Select
+            label={'asdasda'}
+            labelPlacement={'outside'}
+            placeholder={'asdasdasdasdasdasds'}
+            size={'sm'}
+          >
+            <SelectItem>asd</SelectItem>
+            <SelectItem>asd</SelectItem>
+          </Select>
         </form>
       </div>
       <div className={'flex-1/2'}>
