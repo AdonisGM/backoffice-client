@@ -5,10 +5,12 @@ export type ContentType =
   | 'application/json'
   | 'application/x-www-form-urlencoded'
   | 'multipart/form-data';
-export interface BasicApi {
+export interface BasicApi<TReq, TRes> {
   url: string;
   method: MethodType;
   contentType?: ContentType;
+  requestType?: TReq;
+  responseType?: TRes;
 }
 export interface Paging {
   page: {
@@ -25,7 +27,7 @@ export const callApi = async <Req, Res>({
   body,
   query,
 }: {
-  api: BasicApi;
+  api: BasicApi<Req, Res>;
   params?: string[];
   body: Req;
   query?: { [key: string]: string | number | boolean | undefined | null };
@@ -71,7 +73,7 @@ export const callApi = async <Req, Res>({
     method: api.method,
     headers: headers,
     body: processBody,
-    credentials: 'include',
+    // credentials: 'include',
   });
 
   if (!response.ok) {
@@ -90,7 +92,13 @@ export const callApi = async <Req, Res>({
   return (await response.json()) as Res;
 };
 
-export const callDownloadFile = async ({ api, params }: { api: BasicApi; params?: string[] }) => {
+export const callDownloadFile = async <Req, Res>({
+  api,
+  params,
+}: {
+  api: BasicApi<Req, Res>;
+  params?: string[];
+}) => {
   const endpoint = import.meta.env.VITE_APP_URL as string;
   let url = `${endpoint}${api.url}`;
 
@@ -106,7 +114,7 @@ export const callDownloadFile = async ({ api, params }: { api: BasicApi; params?
     headers: {
       'Content-Type': api.contentType || 'application/json',
     },
-    credentials: 'include',
+    // credentials: 'include',
   });
 
   if (!res.ok) {

@@ -2,7 +2,7 @@ import { createFileRoute, redirect } from '@tanstack/react-router';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import LoginContent from '@/features/auth/login/login.content.tsx';
+import LoginPage from '@/features/auth/login/login.page.tsx';
 export const Route = createFileRoute('/login')({
   component: RouteComponent,
   beforeLoad: () => {
@@ -25,7 +25,7 @@ function RouteComponent() {
   }, [i18n.language]);
 
   return (
-    <LoginContent
+    <LoginPage
       search={{
         redirect: redirect || undefined,
       }}
