@@ -1,13 +1,14 @@
 import type { RootState } from '@/redux/store.ts';
 
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { defaultLanguage } from '@/configs/locale.ts';
 
 type LanguageType = {
   value: string;
 };
 
 const initialState: LanguageType = {
-  value: localStorage.getItem('lang') || 'en',
+  value: localStorage.getItem('lang') || defaultLanguage,
 };
 
 export const languageSlice = createSlice({

@@ -14,6 +14,7 @@ import en_header from './en/header.json';
 import vi_header from './vi/header.json';
 import en_form from './en/form.json';
 import vi_form from './vi/form.json';
+import { defaultLanguage } from '@/configs/locale.ts';
 
 export const defaultNS = 'home';
 
@@ -21,7 +22,7 @@ i18next
   .use(initReactI18next)
   .use(i18nextPlugin)
   .init({
-    lng: localStorage.getItem('lang') || 'vi',
+    lng: localStorage.getItem('lang') || defaultLanguage,
     debug: true,
     resources: {
       en: {

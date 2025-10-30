@@ -362,6 +362,7 @@ const AnalystsAssetComponent = () => {
         data={data}
         isLoading={false}
         isOverflow={true}
+        rowId={(originalRow) => String(originalRow.id)}
         onClickExportCsv={async () => {
           return new Promise<void>((resolve) => {
             setTimeout(() => {

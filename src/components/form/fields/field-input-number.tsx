@@ -42,6 +42,7 @@ const FieldInputNumber = (props: FieldInputNumberProps) => {
         }}
         onValueChange={(e) => {
           field.handleChange(e);
+          props.onChange && props.onChange(e);
         }}
       />
     </div>

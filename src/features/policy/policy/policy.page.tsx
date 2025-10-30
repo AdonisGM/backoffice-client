@@ -1,13 +1,17 @@
 import { createFormHook, useStore } from '@tanstack/react-form';
 import { useState } from 'react';
-import { Select, SelectItem } from '@heroui/react';
+import { DateValue } from '@internationalized/date';
+import { RangeValue } from '@heroui/react';
 import FieldInputText from '@/components/form/fields/field-input-text.tsx';
 import FieldInputPassword from '@/components/form/fields/field-input-password.tsx';
 import ButtonSubmit from '@/components/form/buttons/button-submit.tsx';
 import { fieldContext, formContext } from '@/components/form';
 import FieldInputNumber from '@/components/form/fields/field-input-number.tsx';
 import FieldInputAutocomplete from '@/components/form/fields/field-input-autocomplete.tsx';
-import FieldSelect from '@/components/form/fields/field-input-select.tsx';
+import FieldSelect from '@/components/form/fields/field-select.tsx';
+import FieldInputDate from '@/components/form/fields/field-input-date.tsx';
+import FieldPickerDate from '@/components/form/fields/field-picker-date.tsx';
+import FieldPickerDateRange from '@/components/form/fields/field-picker-date-range.tsx';
 
 const { useAppForm } = createFormHook({
   fieldComponents: {
@@ -16,6 +20,9 @@ const { useAppForm } = createFormHook({
     FieldInputNumber,
     FieldInputAutocomplete,
     FieldSelect,
+    FieldInputDate,
+    FieldPickerDate,
+    FieldPickerDateRange,
   },
   formComponents: {
     ButtonSubmit,
@@ -24,19 +31,36 @@ const { useAppForm } = createFormHook({
   formContext,
 });
 
+type FormValues = {
+  text: string;
+  pass: string;
+  number: number;
+  autocomplete: string | null;
+  autocompleteAsync: string | null;
+  select: string | null;
+  dateInput: DateValue | null;
+  datePicker: DateValue | null;
+  datePickerRange: RangeValue<DateValue> | null;
+};
+
+const defaultValues: FormValues = {
+  text: '',
+  pass: '',
+  number: 0,
+  autocomplete: null,
+  autocompleteAsync: null,
+  select: null,
+  dateInput: null,
+  datePicker: null,
+  datePickerRange: null,
+};
+
 const PolicyPage = () => {
   const [isDisabled, setIsDisabled] = useState(false);
   const [requireValidation, setRequireValidation] = useState(false);
 
   const form = useAppForm({
-    defaultValues: {
-      text: '',
-      pass: '',
-      number: '',
-      autocomplete: '',
-      autocompleteAsync: '',
-      select: '',
-    },
+    defaultValues: defaultValues,
   });
 
   const firstName = useStore(form.store, (state) => state.values);
@@ -71,7 +95,7 @@ const PolicyPage = () => {
           </label>
         </div>
         <form
-          className={'w-4/10'}
+          className={'m-4 grid grid-cols-2 gap-4'}
           onSubmit={(e) => {
             e.preventDefault();
             form.handleSubmit().then();
@@ -155,15 +179,33 @@ const PolicyPage = () => {
               />
             )}
           </form.AppField>
-          <Select
-            label={'asdasda'}
-            labelPlacement={'outside'}
-            placeholder={'asdasdasdasdasdasds'}
-            size={'sm'}
-          >
-            <SelectItem>asd</SelectItem>
-            <SelectItem>asd</SelectItem>
-          </Select>
+          <form.AppField name="dateInput">
+            {(field) => (
+              <field.FieldInputDate
+                isDisabled={isDisabled}
+                isRequired={requireValidation}
+                label={'Date input'}
+              />
+            )}
+          </form.AppField>
+          <form.AppField name="datePicker">
+            {(field) => (
+              <field.FieldPickerDate
+                isDisabled={isDisabled}
+                isRequired={requireValidation}
+                label={'Date picker'}
+              />
+            )}
+          </form.AppField>
+          <form.AppField name="datePickerRange">
+            {(field) => (
+              <field.FieldPickerDateRange
+                isDisabled={isDisabled}
+                isRequired={requireValidation}
+                label={'Date picker range'}
+              />
+            )}
+          </form.AppField>
         </form>
       </div>
       <div className={'flex-1/2'}>

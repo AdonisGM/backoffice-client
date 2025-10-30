@@ -1,4 +1,4 @@
-import { Select, SelectItem, Selection } from '@heroui/react';
+import { Select, SelectItem } from '@heroui/react';
 import { useFieldContext } from '@/components/form';
 
 type FieldSelectProps = {
@@ -8,10 +8,11 @@ type FieldSelectProps = {
   placeholder?: string;
   isDisabled?: boolean;
   isRequired?: boolean;
+  onChange?: (value: string | null) => void;
 };
 
 const FieldSelect = (props: FieldSelectProps) => {
-  const field = useFieldContext<Selection>();
+  const field = useFieldContext<string | null>();
 
   return (
     <div className={props.className}>
@@ -21,12 +22,13 @@ const FieldSelect = (props: FieldSelectProps) => {
         label={props.label}
         labelPlacement={'outside'}
         placeholder={props.placeholder}
-        selectedKeys={field.state.value}
+        selectedKeys={field.state.value ? new Set([field.state.value]) : new Set()}
         selectionMode={'single'}
         size={'sm'}
         variant={'flat'}
         onSelectionChange={(value) => {
-          field.handleChange(value);
+          field.handleChange(value.currentKey || null);
+          props.onChange && props.onChange(value.currentKey || null);
         }}
       >
         {props.options.map((option) => (

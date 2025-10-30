@@ -48,8 +48,11 @@ const ChangeLanguage = () => {
       }}
       selectedKeys={[language]}
       size={'sm'}
-      onChange={(value) => {
-        dispatch(change(value.target.value));
+      onSelectionChange={(value) => {
+        if (!value.currentKey) {
+          return;
+        }
+        dispatch(change(value.currentKey));
       }}
     >
       {(language) => (

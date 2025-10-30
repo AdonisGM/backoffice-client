@@ -1,5 +1,5 @@
 const ComboFeePage = () => {
-  return <div>Combo Fee Page</div>;
+  return <div className={''}>asdasd</div>;
 };
 
 export default ComboFeePage;

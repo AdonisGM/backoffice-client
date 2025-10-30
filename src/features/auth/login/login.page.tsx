@@ -82,7 +82,7 @@ const LoginPage = (props: {
           </div>
           <div className={'flex w-full flex-col items-center justify-center'}>
             <form
-              className={'w-7/10'}
+              className={'flex w-6/10 flex-col gap-1'}
               onSubmit={(e) => {
                 e.preventDefault();
                 form.handleSubmit().then();

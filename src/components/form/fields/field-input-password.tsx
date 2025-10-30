@@ -9,7 +9,7 @@ const FieldInputPassword = (props: InputProps) => {
     <div className={props.className}>
       <Input
         autoComplete={'off'}
-        labelPlacement={'outside-top'}
+        labelPlacement={'outside'}
         radius={'sm'}
         size={'sm'}
         type={'password'}

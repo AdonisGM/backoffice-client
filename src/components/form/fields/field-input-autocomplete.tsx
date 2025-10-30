@@ -11,7 +11,7 @@ type FieldInputAutocompleteProps = {
   label?: string;
   placeholder?: string;
   options: Array<{ key: string; label: string }>;
-  onInputChange?: (value: string) => void;
+  onChange?: (value: string) => void;
 };
 
 type FieldState = {
@@ -35,6 +35,7 @@ const FieldInputAutocomplete = (props: FieldInputAutocompleteProps) => {
       let selectedItem = prevState.items.find((option) => option.key === key);
 
       field.handleChange(key as string);
+      props.onChange && props.onChange(key as string);
 
       return {
         inputValue: selectedItem?.label || '',
@@ -72,18 +73,13 @@ const FieldInputAutocomplete = (props: FieldInputAutocompleteProps) => {
 
   return (
     <Autocomplete
-      inputProps={{
-        classNames: {
-          label: 'w-fit h-fit mb-1.5 p-0',
-        },
-      }}
       inputValue={fieldState.inputValue}
       isDisabled={props.isDisabled}
       isLoading={props.isLoading}
       isRequired={props.isRequired}
       items={fieldState.items}
       label={props.label}
-      labelPlacement={'outside-top'}
+      labelPlacement={'outside'}
       listboxProps={{ emptyContent: t('autocomplete.empty_content') }}
       placeholder={props.placeholder}
       radius={'sm'}

@@ -6,7 +6,6 @@ import { PanelLeftIcon } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { cn } from '@/utils/cn';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
 import {
   Sheet,
@@ -302,17 +301,6 @@ function SidebarInset({ className, ...props }: React.ComponentProps<'main'>) {
         className
       )}
       data-slot="sidebar-inset"
-      {...props}
-    />
-  );
-}
-
-function SidebarInput({ className, ...props }: React.ComponentProps<typeof Input>) {
-  return (
-    <Input
-      className={cn('bg-background h-8 w-full shadow-none', className)}
-      data-sidebar="input"
-      data-slot="sidebar-input"
       {...props}
     />
   );
@@ -678,7 +666,6 @@ export {
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarHeader,
-  SidebarInput,
   SidebarInset,
   SidebarMenu,
   SidebarMenuAction,
